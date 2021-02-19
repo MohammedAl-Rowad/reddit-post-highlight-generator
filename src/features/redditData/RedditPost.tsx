@@ -10,12 +10,14 @@ import {
   CardContent,
   Typography,
   Grid,
+  IconButton,
   CardMedia,
   Box,
   CardHeader,
   Avatar,
   makeStyles,
 } from '@material-ui/core'
+import { Link as LinkIcon } from '@material-ui/icons'
 import axios from 'axios'
 
 const reddit = 'https://www.reddit.com'
@@ -28,18 +30,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   media: {
-    height: 0,
+    height: '100%',
     paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
   },
   avatar: {
     backgroundColor: '#149EF0',
@@ -69,8 +63,8 @@ const RedditPost = () => {
   return (
     <Box mt={4}>
       <Grid container spacing={1}>
-        <Grid item xs={12} md={4} xl={4}></Grid>
-        <Grid item xs={12} md={4} xl={4}>
+        <Grid item xs={12} md={3} xl={3}></Grid>
+        <Grid item xs={12} md={6} xl={6}>
           <Card className={classes.root}>
             <CardHeader
               avatar={
@@ -83,6 +77,13 @@ const RedditPost = () => {
                 </Avatar>
               }
               title={subRedditData.subredditNamePrefixed}
+              action={
+                !!subRedditData.linkUrl && (
+                  <IconButton aria-label="settings">
+                    <LinkIcon />
+                  </IconButton>
+                )
+              }
               subheader={
                 <a
                   href={`${reddit}/u/${subRedditData.author}`}
@@ -98,13 +99,13 @@ const RedditPost = () => {
               />
             )}
             <CardContent>
-              <Typography variant="h4" color="textSecondary" component="p">
+              <Typography variant="h5" color="textSecondary" component="p">
                 {subRedditData.title}
               </Typography>
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} md={4} xl={4}></Grid>
+        <Grid item xs={12} md={3} xl={3}></Grid>
       </Grid>
     </Box>
   )

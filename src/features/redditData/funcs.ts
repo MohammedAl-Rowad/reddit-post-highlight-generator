@@ -13,7 +13,12 @@ const getSubRedditInfo = ({ data: { children } }: any) => {
     title: data.title,
     body: data.body,
     numComments: data.num_comments,
-    imgUrl: data.url_overridden_by_dest,
+    linkUrl: checkURLIfForImage(data.url_overridden_by_dest || data.thumbnail)
+      ? null
+      : data.url_overridden_by_dest,
+    imgUrl: checkURLIfForImage(data.url_overridden_by_dest || data.thumbnail)
+      ? data.url_overridden_by_dest || data.thumbnail
+      : null,
   }))
   return mappedChildren
 }
@@ -24,3 +29,6 @@ const getTopComments = ({ data: { children } }: any) => {
   }))
   return mappedChildren
 }
+
+const checkURLIfForImage = (url: string) =>
+  url.match(/\.(jpeg|jpg|gif|png)$/) !== null
