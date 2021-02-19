@@ -22,9 +22,10 @@ import {
   ImageRounded as ImageRoundedIcon,
 } from '@material-ui/icons'
 import axios from 'axios'
-import { toPng } from 'html-to-image'
+import { toBlob } from 'html-to-image'
 import { toast } from 'react-hot-toast'
 import { saveAs } from 'file-saver'
+import html2canvas from 'html2canvas'
 
 const reddit = 'https://www.reddit.com'
 const useStyles = makeStyles(() => ({
@@ -75,13 +76,25 @@ const RedditPost = () => {
               aria-label="download"
               size="medium"
               onClick={() => {
-                toPng(
-                  document.getElementById('reddit-post-preview') as HTMLElement
-                )
-                  .then((dataUrl) => saveAs(dataUrl, 'image.jpg'))
-                  .catch(() => {
-                    toast.error('Error while downloading the image')
-                  })
+                // toBlob(
+                //   document.getElementById('reddit-post-preview') as HTMLElement
+                // )
+                //   .then((blob: Blob | null) => {
+                //     if (blob) {
+                //       saveAs(blob, 'image.jpg')
+                //     } else {
+                //       throw new Error()
+                //     }
+                //   })
+                //   .catch(() => {
+                //     toast.error('Error while downloading the image')
+                //   })
+
+                html2canvas(
+                  document.querySelector('#reddit-post-preview') as HTMLElement
+                ).then((canvas) => {
+                  document.body.appendChild(canvas)
+                })
               }}
             >
               <ImageRoundedIcon />
