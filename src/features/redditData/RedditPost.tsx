@@ -17,11 +17,17 @@ import {
   Avatar,
   makeStyles,
 } from '@material-ui/core'
-import { Link as LinkIcon } from '@material-ui/icons'
+import {
+  LinkRounded as LinkRoundedIcon,
+  ImageRounded as ImageRoundedIcon,
+} from '@material-ui/icons'
 import axios from 'axios'
+import { toPng } from 'html-to-image'
+import { toast } from 'react-hot-toast'
+import { saveAs } from 'file-saver'
 
 const reddit = 'https://www.reddit.com'
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     backgroundColor: '#1A1A1B',
     color: '#D7DADC',
@@ -63,9 +69,27 @@ const RedditPost = () => {
   return (
     <Box mt={4}>
       <Grid container spacing={1}>
-        <Grid item xs={12} md={3} xl={3}></Grid>
+        <Grid item xs={12} md={3} xl={3} justify="flex-end" container>
+          <Box>
+            <IconButton
+              aria-label="download"
+              size="medium"
+              onClick={() => {
+                toPng(
+                  document.getElementById('reddit-post-preview') as HTMLElement
+                )
+                  .then((dataUrl) => saveAs(dataUrl, 'image.jpg'))
+                  .catch(() => {
+                    toast.error('Error while downloading the image')
+                  })
+              }}
+            >
+              <ImageRoundedIcon />
+            </IconButton>
+          </Box>
+        </Grid>
         <Grid item xs={12} md={6} xl={6}>
-          <Card className={classes.root}>
+          <Card className={classes.root} id="reddit-post-preview">
             <CardHeader
               avatar={
                 <Avatar
@@ -80,7 +104,7 @@ const RedditPost = () => {
               action={
                 !!subRedditData.linkUrl && (
                   <IconButton aria-label="settings">
-                    <LinkIcon />
+                    <LinkRoundedIcon />
                   </IconButton>
                 )
               }

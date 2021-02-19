@@ -11,8 +11,8 @@ import {
 } from '@material-ui/core'
 import {
   Reddit as RedditIcon,
-  ErrorSharp as ErrorSharpIcon,
-  EmojiNatureSharp as EmojiNatureSharpIcon,
+  ErrorRounded as ErrorRoundedIcon,
+  EmojiNatureRounded as EmojiNatureRoundedIcon,
 } from '@material-ui/icons'
 import { useDebouncedCallback } from 'use-debounce'
 import { addLink, selectLink } from 'features/postLinkInput'
@@ -85,7 +85,7 @@ const PostLinkInput = () => {
                     aria-label="Generate Post HighLights"
                     disabled={httpStatus === 'PENDING' || !!error || !storeLink}
                   >
-                    <EmojiNatureSharpIcon />
+                    <EmojiNatureRoundedIcon />
                   </Fab>
                 </span>
               </Tooltip>
@@ -96,7 +96,7 @@ const PostLinkInput = () => {
               label={error}
               color="secondary"
               variant="outlined"
-              icon={<ErrorSharpIcon />}
+              icon={<ErrorRoundedIcon />}
             />
           )}
         </Grid>
