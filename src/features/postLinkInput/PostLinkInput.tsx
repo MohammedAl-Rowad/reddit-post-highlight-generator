@@ -36,8 +36,8 @@ const PostLinkInput = () => {
   return (
     <Box mt={4}>
       <Grid container spacing={1}>
-        <Grid item xs={12} md={3} xl={3}></Grid>
-        <Grid item xs={12} md={5} xl={5}>
+        <Grid item xs={12} md={4} xl={4}></Grid>
+        <Grid item xs={12} md={4} xl={4}>
           <Box display="flex">
             <TextField
               error={!!error}
@@ -94,7 +94,7 @@ const PostLinkInput = () => {
             />
           )}
         </Grid>
-        <Grid item xs={12} md={3} xl={3}></Grid>
+        <Grid item xs={12} md={4} xl={4}></Grid>
       </Grid>
     </Box>
   )
