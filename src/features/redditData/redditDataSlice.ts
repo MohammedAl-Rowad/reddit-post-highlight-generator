@@ -5,7 +5,9 @@ import {
   AsyncThunk,
 } from '@reduxjs/toolkit'
 import { HTTP_STATUS } from 'types'
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
+import { mapRedditResponse } from './funcs'
+import { redditDataReducer } from '.'
 
 export const fetchRedditData: AsyncThunk<
   Promise<object>,
@@ -13,26 +15,34 @@ export const fetchRedditData: AsyncThunk<
   object
 > = createAsyncThunk<Promise<object>, string, object>(
   'reddit/fetchRedditData',
-  async (link: string): Promise<AxiosResponse> => {
+  async (link: string): Promise<any> => {
     const { data } = await axios.get(`${link}.json`)
-    return data as Promise<AxiosResponse>
+    console.log({ data })
+    return mapRedditResponse(data)
   }
 )
 
 interface redditDataState {
   data: any
+  subRedditAbout: any
   status: HTTP_STATUS | null
 }
 
 const initialState: redditDataState = {
   data: {},
+  subRedditAbout: {},
   status: null,
 }
 
 const redditDataSlice = createSlice({
   name: 'redditData',
   initialState,
-  reducers: {},
+  reducers: {
+    addSubRedditAbout(state, { payload }: PayloadAction<any>) {
+      console.log({ payload })
+      state.subRedditAbout = payload
+    },
+  },
   extraReducers: {
     [fetchRedditData.fulfilled as any](state, { payload }: PayloadAction) {
       state.data = payload
@@ -46,5 +56,7 @@ const redditDataSlice = createSlice({
     },
   },
 })
+
+export const { addSubRedditAbout } = redditDataSlice.actions
 
 export default redditDataSlice.reducer
