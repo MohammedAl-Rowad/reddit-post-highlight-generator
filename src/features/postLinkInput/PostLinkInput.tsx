@@ -16,13 +16,15 @@ import {
 } from '@material-ui/icons'
 import { useDebouncedCallback } from 'use-debounce'
 import { addLink, selectLink } from 'features/postLinkInput'
-import { fetchRedditData } from 'features/redditData'
+import { fetchRedditData, selectStatus } from 'features/redditData'
 import { isUri } from 'valid-url'
 import { toast } from 'react-hot-toast'
+import { HTTP_STATUS } from 'types'
 
 const PostLinkInput = () => {
   const dispatch = useDispatch()
   const storeLink: string = useSelector(selectLink)
+  const httpStatus: HTTP_STATUS | null = useSelector(selectStatus)
   const [error, setError] = useState<string>('')
   const addLinkToStore = useDebouncedCallback((text: string) => {
     if (isUri(text)) {
@@ -64,12 +66,16 @@ const PostLinkInput = () => {
                       toast.promise(
                         dispatch(fetchRedditData(storeLink)) as any,
                         {
-                          loading: 'Saving...',
+                          loading: <i>Fetching data...</i>,
                           success: (data: any) => {
                             if (data.error) {
                               throw new Error()
                             } else {
-                              return <b>Fetched Data from</b>
+                              return (
+                                <b>
+                                  <i>Fetched Data</i>
+                                </b>
+                              )
                             }
                           },
                           error: <b>Something went wrong!</b>,
@@ -77,7 +83,7 @@ const PostLinkInput = () => {
                       )
                     }}
                     aria-label="Generate Post HighLights"
-                    disabled={!!error || !storeLink}
+                    disabled={httpStatus === 'PENDING' || !!error || !storeLink}
                   >
                     <EmojiNatureSharpIcon />
                   </Fab>
