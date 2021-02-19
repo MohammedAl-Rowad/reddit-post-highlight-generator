@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import { postLinkInputReducer } from 'features/postLinkInput'
+import { redditDataReducer } from 'features/redditData'
 
 export const store = configureStore({
   reducer: {
     postLinkInput: postLinkInputReducer,
+    redditData: redditDataReducer,
   },
 })
 

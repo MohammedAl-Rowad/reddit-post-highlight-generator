@@ -16,11 +16,13 @@ import {
 } from '@material-ui/icons'
 import { useDebouncedCallback } from 'use-debounce'
 import { addLink, selectLink } from 'features/postLinkInput'
+import { fetchRedditData } from 'features/redditData'
 import { isUri } from 'valid-url'
+import { toast } from 'react-hot-toast'
 
 const PostLinkInput = () => {
   const dispatch = useDispatch()
-  const storeLink = useSelector(selectLink)
+  const storeLink: string = useSelector(selectLink)
   const [error, setError] = useState<string>('')
   const addLinkToStore = useDebouncedCallback((text: string) => {
     if (isUri(text)) {
@@ -58,6 +60,22 @@ const PostLinkInput = () => {
                 <span>
                   <Fab
                     color="primary"
+                    onClick={() => {
+                      toast.promise(
+                        dispatch(fetchRedditData(storeLink)) as any,
+                        {
+                          loading: 'Saving...',
+                          success: (data: any) => {
+                            if (data.error) {
+                              throw new Error()
+                            } else {
+                              return <b>Fetched Data from</b>
+                            }
+                          },
+                          error: <b>Something went wrong!</b>,
+                        }
+                      )
+                    }}
                     aria-label="Generate Post HighLights"
                     disabled={!!error || !storeLink}
                   >
