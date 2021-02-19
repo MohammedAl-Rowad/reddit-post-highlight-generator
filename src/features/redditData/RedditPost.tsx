@@ -5,7 +5,6 @@ import {
   addSubRedditAbout,
   selectSubbRedditIconUrl,
 } from 'features/redditData'
-import { red } from '@material-ui/core/colors'
 import {
   Card,
   CardContent,
@@ -43,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: '#149EF0',
   },
 }))
 
