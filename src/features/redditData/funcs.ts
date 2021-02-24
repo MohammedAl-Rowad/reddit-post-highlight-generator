@@ -26,6 +26,7 @@ const getSubRedditInfo = ({ data: { children } }: any) => {
 const getTopComments = ({ data: { children } }: any) => {
   const mappedChildren = children.map(({ data }: any) => ({
     body: data.body,
+    author: data.author,
   }))
   return mappedChildren
 }

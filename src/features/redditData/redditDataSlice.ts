@@ -17,7 +17,6 @@ export const fetchRedditData: AsyncThunk<
   'reddit/fetchRedditData',
   async (link: string): Promise<any> => {
     const { data } = await axios.get(`${link}.json`)
-    console.log({ data })
     return mapRedditResponse(data)
   }
 )
@@ -39,7 +38,6 @@ const redditDataSlice = createSlice({
   initialState,
   reducers: {
     addSubRedditAbout(state, { payload }: PayloadAction<any>) {
-      console.log({ payload })
       state.subRedditAbout = payload
     },
   },
