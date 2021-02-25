@@ -24,5 +24,5 @@ https://www.reddit.com/r/AskReddit/comments/iwedc5/what_if_god_came_down_one_day
 <details>
   <summary>result</summary>
   
-  <img src="example01.png" width="100%" />
+  <img src="example02.png" width="100%" />
 </details>
