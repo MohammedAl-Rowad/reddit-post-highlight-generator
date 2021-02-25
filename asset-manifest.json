@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/reddit-post-highlight-generator/static/css/main.74bd0902.chunk.css",
-    "main.js": "/reddit-post-highlight-generator/static/js/main.10765d77.chunk.js",
-    "main.js.map": "/reddit-post-highlight-generator/static/js/main.10765d77.chunk.js.map",
+    "main.js": "/reddit-post-highlight-generator/static/js/main.f733aab8.chunk.js",
+    "main.js.map": "/reddit-post-highlight-generator/static/js/main.f733aab8.chunk.js.map",
     "runtime-main.js": "/reddit-post-highlight-generator/static/js/runtime-main.9921f19c.js",
     "runtime-main.js.map": "/reddit-post-highlight-generator/static/js/runtime-main.9921f19c.js.map",
-    "static/js/2.5a112bc0.chunk.js": "/reddit-post-highlight-generator/static/js/2.5a112bc0.chunk.js",
-    "static/js/2.5a112bc0.chunk.js.map": "/reddit-post-highlight-generator/static/js/2.5a112bc0.chunk.js.map",
+    "static/js/2.bc09c908.chunk.js": "/reddit-post-highlight-generator/static/js/2.bc09c908.chunk.js",
+    "static/js/2.bc09c908.chunk.js.map": "/reddit-post-highlight-generator/static/js/2.bc09c908.chunk.js.map",
     "index.html": "/reddit-post-highlight-generator/index.html",
     "static/css/main.74bd0902.chunk.css.map": "/reddit-post-highlight-generator/static/css/main.74bd0902.chunk.css.map",
-    "static/js/2.5a112bc0.chunk.js.LICENSE.txt": "/reddit-post-highlight-generator/static/js/2.5a112bc0.chunk.js.LICENSE.txt"
+    "static/js/2.bc09c908.chunk.js.LICENSE.txt": "/reddit-post-highlight-generator/static/js/2.bc09c908.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9921f19c.js",
-    "static/js/2.5a112bc0.chunk.js",
+    "static/js/2.bc09c908.chunk.js",
     "static/css/main.74bd0902.chunk.css",
-    "static/js/main.10765d77.chunk.js"
+    "static/js/main.f733aab8.chunk.js"
   ]
 }
