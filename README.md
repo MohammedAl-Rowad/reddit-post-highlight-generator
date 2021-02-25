@@ -18,7 +18,7 @@ https://mohammedal-rowad.github.io/reddit-post-highlight-generator/
 
 try adding this link in the input for example
 
-https://www.reddit.com/r/AskReddit/comments/iwedc5/what_if_god_came_down_one_day_and_said_its/
+https://www.reddit.com/r/AskReddit/comments/kka536/what_if_earth_is_like_one_of_those_uncontacted/
 
 
 <details>
