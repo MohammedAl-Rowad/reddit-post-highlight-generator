@@ -2,6 +2,11 @@
 
 a tool that generated highlights for a single reddit post
 
+built with
+
+- [reactjs](https://reactjs.org/)
+- [material-ui](https://material-ui.com/)
+- [redux-toolkit](https://redux-toolkit.js.org/)
 
 ## why?
 I usually take screenshots from https://www.reddit.com/r/AskReddit but it's annoying to keep cropping images, so I created this tool to simplify it
