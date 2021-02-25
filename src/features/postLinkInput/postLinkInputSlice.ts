@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
+import parse from 'url-parse'
 interface postLinkInputState {
   link: string
 }
@@ -13,7 +13,8 @@ const postLinkInputSlice = createSlice({
   initialState,
   reducers: {
     addLink(state, { payload: link }: PayloadAction<string>) {
-      state.link = link
+      const { origin, pathname } = parse(link)
+      state.link = `${origin}${pathname}`
     },
   },
   extraReducers: {},
